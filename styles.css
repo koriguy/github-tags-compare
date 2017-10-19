@@ -14,3 +14,10 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+
+.area-container {
+  margin-bottom: 20px;
+}
+.area {
+  margin-top: 10px;
+}

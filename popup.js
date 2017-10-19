@@ -22,7 +22,7 @@
       data.token = items.token || '';
       prefillData();
       initEventListeneres();
-      if (getRepoName() && getUserName() && getToken()) {
+      if (getRepoName() && getUserName() && getUserToken()) {
         fillTags();
       }
       cb ? cb() : null;
@@ -44,7 +44,7 @@
 
   function fillTags() {
     getTags(getRepoName(), tags => {
-      if (tags) {
+      if (tags && tags.length) {
         fillDestinationTag(tags);
         fillSourceTags(tags);
         saveRepos();
@@ -54,9 +54,14 @@
     })
   }
 
+  function fillToken(token) {
+    document.getElementById(TOKEN_ID).value = token;
+  }
+
   function prefillData() {
     fillItems(data.repos, REPO_LIST_ID, REPO_ID);
     fillItems(data.users, USER_LIST_ID, USER_NAME_ID);
+    fillToken(data.token);
   }
 
   function initEventListeneres() {
@@ -69,7 +74,6 @@
     document.getElementById('tagsCompare').addEventListener('click', () => {
       const selectedTag = getSourceTag();
       const lastTag = getDestinationTag();
-      document.getElementById("resp").innerHTML = selectedTag + lastTag;
       window.open('https://github.com/' + getUserName() + '/' + getRepoName() + '/compare/' + selectedTag + '...' + lastTag)
     });
 
@@ -114,7 +118,7 @@
     return document.getElementById(USER_NAME_ID).value;
   }
 
-  function getToken() {
+  function getUserToken() {
     return document.getElementById(TOKEN_ID).value;
   }
   function addTagsToOption(optionsElementId, tags) {
@@ -165,12 +169,15 @@
           cb(result);
         }
       }
-      xhr.open("GET", 'https://api.github.com/repos/' + getUserName() + '/' + repo + '/tags?access_token='+ getToken(), true);
+      xhr.open("GET", 'https://api.github.com/repos/' + getUserName() + '/' + repo + '/tags?access_token='+ getUserToken(), true);
       xhr.send();
     }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     initApp();
+    // document.getElementById('but').addEventListener('click', ()=>{
+    //   initApp();
+    // })
   });
 })();

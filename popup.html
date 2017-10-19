@@ -9,36 +9,43 @@
 </head>
 
 <body>
-  <div class="token-conainer">
-    <input type="text" id="accessToken">
+  <div class="area-container">
+    <div class="area">
+      Token: <input type="text" id="accessToken">
+      <a href="https://github.com/settings/tokens" rel="noreferrer nofollow" target="_blank">read here</a>
+    </div>
+
+    <div class="area">
+      User: <input type="text" list="users" id="userName">
+      <datalist id="users"></datalist>
+      <button id="clearUsers">X</button>
+    </div>
+
+    <div class="area">
+      Repo: <input type="text" list="repos" id="repoName">
+      <datalist id="repos"></datalist>
+      <button id="clearRepos">X</button>
+    </div>
+
+    <div class="area">
+      <button id="getTags">getTags</button>
+    </div>
   </div>
 
-  <div>
-    <input type="text" list="users" id="userName">
-    <datalist id="users"></datalist>
-    <button id="clearUsers">X</button>
+  <div class="area-container">
+    <div class="container area">
+      <span>New Version</span>
+      <select id="destinationTags"></select>
+    </div>
+
+    <div class="container area">
+      <span>Previous Version</span>
+      <select id="sourceTags"></select>
+    </div>
   </div>
-
-  <div>
-    <input type="text" list="repos" id="repoName">
-    <datalist id="repos"></datalist>
-    <button id="clearRepos">X</button>
+  <div class="area-container">
+    <button id="tagsCompare">compare</button>
   </div>
-
-  <button id="getTags">getTags</button>
-  <div id="resp"></div>
-
-  <div class="container">
-    <span>New Tag</span>
-    <select id="destinationTags"></select>
-  </div>
-
-  <div class="container">
-    <span>Old Tag</span>
-    <select id="sourceTags"></select>
-  </div>
-
-  <button id="tagsCompare">compare</button>
 </body>
 
 </html>
