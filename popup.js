@@ -176,8 +176,5 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initApp();
-    // document.getElementById('but').addEventListener('click', ()=>{
-    //   initApp();
-    // })
   });
 })();
