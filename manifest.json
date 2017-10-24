@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Getting started example",
-    "description": "This extension allows the user to change the background color of the current page.",
+    "name": "github tags compare",
+    "description": "This extension allows the user to compare github tags",
     "version": "1.0",
     "browser_action": {
         "default_icon": "icon128.png",
