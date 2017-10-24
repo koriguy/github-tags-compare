@@ -18,6 +18,18 @@ h1 {
 .area-container {
   margin-bottom: 20px;
 }
+
 .area {
   margin-top: 10px;
+}
+
+.tags-compare {
+  width: 200px;
+  height: 26px;
+  border-radius: 6px;
+  background-color: #e2e1e1;
+  font-size: 14px;
+  border: 1px solid #c7c5c5;
+  margin: auto;
+  display: block;
 }
