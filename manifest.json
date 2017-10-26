@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "github tags compare",
     "description": "This extension allows the user to compare github tags",
-    "version": "1.1",
+    "version": "1.2",
     "browser_action": {
         "default_icon": "icon128.png",
         "default_popup": "popup.html"
