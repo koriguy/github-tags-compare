@@ -123,8 +123,7 @@
   }
   function addTagsToOption(optionsElementId, tags) {
     var optionsElem = document.getElementById(optionsElementId);
-    var tagsLimit = tags.length <= TAGS_LIMIT ? tags.length : TAGS_LIMIT;
-    for (var i = 0; i < tagsLimit; i++) {
+    for (var i = 0; i < tags.length; i++) {
       var opt = document.createElement('option')
       opt.innerHTML = tags[i].name;
       opt.value = tags[i].name;
@@ -137,13 +136,18 @@
     document.getElementById(SOURCE_TAGS_ELEMENT_ID).innerHTML = '';
   }
 
+  function getLimitedTags(tags) {
+    var tagsLimit = tags.length <= TAGS_LIMIT ? tags.length : TAGS_LIMIT;
+    return tags.slice(0, tagsLimit);
+  }
   function fillDestinationTag(tags) {
-    addTagsToOption(DESTINATION_TAGS_ELEMENT_ID, tags)
+    addTagsToOption(DESTINATION_TAGS_ELEMENT_ID, getLimitedTags(tags).concat([{ name: 'master' }]));
+    
     document.getElementById(DESTINATION_TAGS_ELEMENT_ID).options[0].selected = true;
   }
 
   function fillSourceTags(tags) {
-    addTagsToOption(SOURCE_TAGS_ELEMENT_ID, tags);
+    addTagsToOption(SOURCE_TAGS_ELEMENT_ID, getLimitedTags(tags));
     document.getElementById(SOURCE_TAGS_ELEMENT_ID).options[1].selected = true;
   }
 
